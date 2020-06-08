@@ -1,0 +1,1 @@
+const kAppName = 'Vote App';
