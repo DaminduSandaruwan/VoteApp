@@ -27,7 +27,9 @@ class VoteApp extends StatelessWidget {
             leading: IconButton(
               icon: Icon(Icons.home),
               color: Colors.white,
-              onPressed: (){},
+              onPressed: (){
+                print('Result Screen');
+              },
             ),
           ),
           body: ResultScreen(),
