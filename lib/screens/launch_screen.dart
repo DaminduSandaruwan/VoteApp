@@ -25,15 +25,20 @@ class LaunchScreen extends StatelessWidget {
           SizedBox(height: 200,),
           LoginButton(
             label: 'Google Sign In',
-            onPressed: (){},
+            onPressed: () => signIn(context),
           ),
           SizedBox(height: 10,),
           LoginButton(
             label: 'Anonymous Sign In',
-            onPressed: (){},
+            onPressed: ()=>signIn(context),
           ),
         ],
       ),
     );
   }
+
+  void signIn(BuildContext context){
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+
 }
