@@ -32,4 +32,4 @@ class VoteState with ChangeNotifier{
     notifyListeners();
   }
 
-}
+} 
