@@ -7,6 +7,7 @@ import 'package:vote_app/models/vote.dart';
 class VoteListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Function alternateColor = getAlternate(start:0);
     return Consumer<VoteState>(
       builder: (context,voteState,child){
         return Column(
@@ -24,11 +25,25 @@ class VoteListWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-              ), 
+              ),
+              color: alternateColor(),
             )
           ],
         );
       },
     );
+  }
+  Function getAlternate({int start =0}){
+    int indexNum = start;
+    Color getColor (){
+      Color color = Colors.teal[100];
+
+      if(indexNum %2 ==0){
+        color = Colors.blueAccent[100];
+      }
+      ++indexNum;
+      return color;
+    }
+    return getColor;
   }
 }
