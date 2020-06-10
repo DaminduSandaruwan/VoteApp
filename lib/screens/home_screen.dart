@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vote_app/models/vote.dart';
+import 'package:vote_app/state/vote.dart';
+import 'package:vote_app/widgets/vote_list.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -7,6 +11,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentStep = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    //loading Votes
+    Future.microtask(() {
+      Provider.of<VoteState>(context, listen: false).clearState();
+      Provider.of<VoteState>(context, listen: false).loadVoteList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               steps: [
                 getStep(
                   title: 'Choose',
-                  child: Text('Something..'),
+                  child: VoteListWidget(),
                   isActive: true,
                 ),
                 getStep(

@@ -8,7 +8,7 @@ class VoteState with ChangeNotifier{
   Vote _activeVote;
   String _selectedOptionInActiveVote;
 
-  void loadVoteList(){
+  void loadVoteList() async{
     _voteList = getVoteList();
     notifyListeners();
   }
