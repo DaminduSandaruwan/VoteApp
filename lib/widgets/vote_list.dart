@@ -8,6 +8,8 @@ class VoteListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Function alternateColor = getAlternate(start:0);
+    String activeVoteId=Provider.of<VoteState>(context).activeVote?.voteId ?? '';
+
     return Consumer<VoteState>(
       builder: (context,voteState,child){
         return Column(
@@ -21,12 +23,23 @@ class VoteListWidget extends StatelessWidget {
                     vote.voteTitle,
                     style: TextStyle(
                       fontSize:18,
-                      color:Colors.black,
+                      color: activeVoteId == vote.voteId 
+                        ? Colors.white 
+                        : Colors.black,
+                      fontWeight: activeVoteId == vote.voteId
+                        ? FontWeight.bold
+                        : FontWeight.normal,
                     ),
                   ),
                 ),
+                selected: activeVoteId == vote.voteId ? true : false,
+                onTap: (){
+                  Provider.of<VoteState>(context).activeVote=vote;
+                },
               ),
-              color: alternateColor(),
+              color:activeVoteId== vote.voteId 
+                ? Colors.red[200] 
+                : alternateColor(),
             )
           ],
         );
