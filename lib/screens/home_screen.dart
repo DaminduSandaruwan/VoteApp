@@ -45,9 +45,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
               onStepContinue: (){
-                setState(() {
-                  _currentStep = (_currentStep+1)>1 ? 1 : _currentStep + 1;
-                });
+                if(_currentStep==0){
+                  if(step2Required()){
+                    setState(() {
+                      _currentStep = (_currentStep+1)>1 ? 1 : _currentStep + 1;
+                    });
+                  } else{
+
+                  }
+                }                
               },
               onStepCancel: (){
                 setState(() {
@@ -60,6 +66,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  bool step2Required(){
+    if(Provider.of<VoteState>(context).activeVote==null){
+      return false;
+    }
+    return true;
+  }
+
   Step getStep({String title, Widget child, bool isActive = false}){
     return Step(
       title: Text(title),
