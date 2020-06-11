@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       _currentStep = (_currentStep+1)>1 ? 1 : _currentStep + 1;
                     });
                   } else{
-
+                    showSnackBar(context, 'Please a Select Vote First!');
                   }
                 }                
               },
@@ -72,6 +72,17 @@ class _HomeScreenState extends State<HomeScreen> {
       return false;
     }
     return true;
+  }
+
+  void showSnackBar(BuildContext context, String msg){
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          msg,
+          style: TextStyle(fontSize: 15),
+        ),
+      ),
+    );
   }
 
   Step getStep({String title, Widget child, bool isActive = false}){
