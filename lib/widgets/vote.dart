@@ -33,27 +33,39 @@ class VoteWidget extends StatelessWidget {
         ),
         for(String option in options)
           Card(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  constraints: BoxConstraints(minHeight: 60),
-                  width: 8,
-                  color: Colors.green,
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(left:10,right:5),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      option,
-                      maxLines: 5,
-                      style: TextStyle(
-                        fontSize: 18,
+            child: InkWell(
+              onTap: (){
+                Provider.of<VoteState>(context).selectedOptionInActiveVote = option;
+              },
+              child: IntrinsicHeight(              
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      constraints: BoxConstraints(minHeight: 60),
+                      width: 8,
+                      color: Colors.green,
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(left:10,right:5),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          option,
+                          maxLines: 5,
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                        color: Provider.of<VoteState>(context).selectedOptionInActiveVote == 
+                          option 
+                          ? Colors.green 
+                          : Colors.white,
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
       ],
