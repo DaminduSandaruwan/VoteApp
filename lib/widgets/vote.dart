@@ -36,15 +36,20 @@ class VoteWidget extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Container(
+                  constraints: BoxConstraints(minHeight: 60),
                   width: 8,
                   color: Colors.green,
                 ),
-                Container(
-                  child: Text(
-                    option,
-                    maxLines: 5,
-                    style: TextStyle(
-                      fontSize: 18,
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(left:10,right:5),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      option,
+                      maxLines: 5,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),
