@@ -38,6 +38,7 @@ class VoteApp extends StatelessWidget {
                 color: Colors.white,
                 onPressed: (){
                   print('Result Screen');
+                  Navigator.pushReplacementNamed(context, '/home');
                 },
               ),
             ),
