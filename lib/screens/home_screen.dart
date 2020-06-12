@@ -54,6 +54,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   } else{
                     showSnackBar(context, 'Please a Select Vote First!');
                   }
+                } 
+                else if(_currentStep==1){
+                   if(step3Required()){
+                     Navigator.pushReplacementNamed(context, '/result');
+                   }else{
+                     showSnackBar(context, 'Please Mark Your Vote!');
+                   }
                 }                
               },
               onStepCancel: (){
@@ -73,6 +80,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool step2Required(){
     if(Provider.of<VoteState>(context).activeVote==null){
+      return false;
+    }
+    return true;
+  }
+
+  bool step3Required(){
+    if(Provider.of<VoteState>(context).selectedOptionInActiveVote==null){
       return false;
     }
     return true;
