@@ -19,6 +19,8 @@ class VoteWidget extends StatelessWidget {
       children: <Widget>[
         Card(
           child: Container(
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.all(20),
             child: Text(
               activeVote.voteTitle,
               style: TextStyle(
@@ -29,6 +31,26 @@ class VoteWidget extends StatelessWidget {
             ),
           ),
         ),
+        for(String option in options)
+          Card(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 8,
+                  color: Colors.green,
+                ),
+                Container(
+                  child: Text(
+                    option,
+                    maxLines: 5,
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
       ],
     );
   }
