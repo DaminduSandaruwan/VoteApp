@@ -66,6 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
               onStepCancel: (){
                 if(_currentStep <=0){
                   Provider.of<VoteState>(context).activeVote=null;
+                }
+                else if(_currentStep <= 1){
+                  Provider.of<VoteState>(context).selectedOptionInActiveVote=null;
                 }                
                 setState(() {
                   _currentStep = (_currentStep-1)<0 ? 0 : _currentStep - 1;
