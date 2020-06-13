@@ -8,6 +8,9 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(20),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       child: createChart(context),
     );
   }
